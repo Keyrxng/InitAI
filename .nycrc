@@ -1,0 +1,15 @@
+{
+  "reporter": [
+    "lcov",
+    "text-summary"
+  ],
+  "include": [
+    "dist/**/*.js"
+  ],
+  "exclude": [
+    "dist/test/**/*.js",
+    "dist/examples/**/*.js",
+    "dist/internal-util/**/*.js",
+    "dist/lang.js"
+  ]
+}
