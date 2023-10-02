@@ -3,9 +3,8 @@
   "version": "1.0.0",
   "description": "Bootstrap any project with any setup args",
   "main": "dist/index.js",
-  "license": "MIT",
   "author": "Keyrxng",
-  "types": "dist/exports.ts",
+  "license": "MIT",
   "scripts": {
     "build": "yarn lint && rimraf dist && tsc",
     "build:webpack": "webpack --config webpack.config.js",
@@ -14,13 +13,14 @@
     "test": "nyc yarn bare-test",
     "lint": "eslint --ext .ts src",
     "format": "prettier --write src",
-    "scrape": "node dist/index.js"
+    "bootstrap": "node dist/index.js"
   },
   "dependencies": {
     "@sinclair/typebox": "^0.31.17",
-    "ajv": "^8.12.0",
-    "axios": "^1.5.1",
-    "clime": "^0.5.14"
+    "clime": "^0.5.14",
+    "dotenv": "^16.3.1",
+    "langchain": "^0.0.156",
+    "openai": "^4.11.0"
   },
   "devDependencies": {
     "@types/chai": "^4.3.6",
@@ -43,6 +43,7 @@
     "nock": "^13.3.3",
     "nyc": "^15.1.0",
     "prettier": "^3.0.3",
+    "rimraf": "^5.0.5",
     "ts-loader": "^9.4.4",
     "ts-node": "^10.9.1",
     "tslint": "^6.1.3",
