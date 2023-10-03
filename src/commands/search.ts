@@ -18,11 +18,9 @@ export default class extends Command {
         const aiBootstrap = new AIBootstrap()
         const packageData = await aiBootstrap.fetchPackage(packageName)
 
-        if (packageData && packageData.collected) {
-            console.log('=====================================')
-            console.log(packageData.collected.metadata)
-            console.log('=====================================')
-            console.log(packageData.collected)
+        if (packageData) {
+            console.log('Package found')
+            console.log(packageData)
         } else {
             console.error('Package not found or an error occurred')
         }
