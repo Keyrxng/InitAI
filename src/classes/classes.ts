@@ -1,10 +1,9 @@
-// import { OpenAI } from 'langchain/llms/openai'
 import * as dotenv from 'dotenv'
 import { OpenAI } from 'langchain/llms/openai'
 import { NPMPackage } from '../types/types'
 import { ExtractInstructionsPrompt } from '../utils/promptUtils'
 
-// dotenv.config()
+dotenv.config()
 
 class AIBootstrap {
     private llm: OpenAI
