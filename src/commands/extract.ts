@@ -1,6 +1,6 @@
 import { Command, command, metadata, param } from 'clime'
 import { AIBootstrap } from '../classes/classes'
-import { writeToFile } from '../utils/writeToFile'
+import { writeJsonToFile } from '../utils/writeToFile'
 
 @command({
     brief: 'Extract the installation instructions for a package',
@@ -12,18 +12,20 @@ export default class extends Command {
     async execute(
         @param({
             required: true,
-            description: 'The name of the package',
+            description:
+                'The name of the packages comma separated (clime,openai,typescript)',
         })
-        packageName: string
+        packageNames: string
     ) {
         const aiBootstrap = new AIBootstrap()
 
-        const instructions = await aiBootstrap.extract(packageName)
+        const instructions = await aiBootstrap.extractMany(packageNames)
+        const name = instructions.map((i) => i.response?.package)
 
         if (instructions) {
             console.log('Instructions extracted')
             console.log(instructions)
-            writeToFile(`${packageName}-setup-steps`, instructions)
+            writeJsonToFile(`${name}-setup-steps`, JSON.stringify(instructions))
         } else {
             console.error('Instructions not extracted or an error occurred')
         }

@@ -19,6 +19,7 @@
     "@sinclair/typebox": "^0.31.17",
     "clime": "^0.5.14",
     "dotenv": "^16.3.1",
+    "js-yaml": "^4.1.0",
     "langchain": "^0.0.156",
     "openai": "^4.11.0"
   },
@@ -27,6 +28,7 @@
     "@types/chai-as-promised": "^7.1.6",
     "@types/glob": "^8.1.0",
     "@types/inquirer": "^9.0.3",
+    "@types/js-yaml": "^4.0.6",
     "@types/mocha": "^10.0.2",
     "@types/node": "^20.7.2",
     "@typescript-eslint/eslint-plugin": "^6.7.3",

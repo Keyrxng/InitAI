@@ -1,0 +1,30 @@
+{
+    "package": "clime",
+    "zodSchema": {
+        "commands": [],
+        "newFilesNeeded": {
+            "files": [
+                {
+                    "path": "tsconfig.json",
+                    "content": "{\n  \"compilerOptions\": {\n    \"target\": \"es6\",\n    \"experimentalDecorators\": true,\n    \"emitDecoratorMetadata\": true\n  }\n}"
+                },
+                {
+                    "path": "src/cli.ts",
+                    "content": "#!/usr/bin/env node\n\nimport * as Path from 'path';\nimport {CLI, Shim} from 'clime';\n\n// The second parameter is the path to folder that contains command modules.\nlet cli = new CLI('greet', Path.join(__dirname, 'commands'));\n\n// Clime in its core provides an object-based command-line infrastructure.\n// To have it work as a common CLI, a shim needs to be applied:\nlet shim = new Shim(cli);\nshim.execute(process.argv);"
+                },
+                {
+                    "path": "src/commands/default.ts",
+                    "content": "import {Command, command, param} from 'clime';\n\n@command({\n  description: 'This is a command for printing a greeting message',\n})\nexport default class extends Command {\n  execute(\n    @param({\n      description: 'Your loud name',\n      required: true,\n    })\n    name: string,\n  ) {\n    return `Hello, ${name}!`;\n  }\n}"
+                }
+            ]
+        },
+        "installSteps": [
+            "yarn add clime",
+            "# or",
+            "npm install clime --save"
+        ],
+        "usageSteps": [],
+        "CommonJSorESModule": "",
+        "thingsToNote": []
+    }
+}

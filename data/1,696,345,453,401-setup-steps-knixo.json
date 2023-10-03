@@ -1,0 +1,76 @@
+[
+    {
+        "response": {
+            "package": "clime",
+            "zodSchema": {
+                "commands": [],
+                "newFilesNeeded": {
+                    "files": [
+                        {
+                            "path": "tsconfig.json",
+                            "content": "{\n  \"compilerOptions\": {\n    \"target\": \"es6\",\n    \"experimentalDecorators\": true,\n    \"emitDecoratorMetadata\": true\n  }\n}"
+                        },
+                        {
+                            "path": "src/cli.ts",
+                            "content": "#!/usr/bin/env node\n\nimport * as Path from 'path';\nimport {CLI, Shim} from 'clime';\n\nlet cli = new CLI('greet', Path.join(__dirname, 'commands'));\n\nlet shim = new Shim(cli);\nshim.execute(process.argv);"
+                        },
+                        {
+                            "path": "src/commands/default.ts",
+                            "content": "import {Command, command, param} from 'clime';\n\n@command({\n  description: 'This is a command for printing a greeting message',\n})\nexport default class extends Command {\n  execute(\n    @param({\n      description: 'Your loud name',\n      required: true,\n    })\n    name: string,\n  ) {\n    return `Hello, ${name}!`;\n  }\n}"
+                        }
+                    ]
+                },
+                "installSteps": [
+                    "yarn add clime",
+                    "npm install clime --save"
+                ],
+                "usageSteps": [],
+                "CommonJSorESModule": "",
+                "thingsToNote": []
+            }
+        },
+        "res": {
+            "package": "clime",
+            "zodSchema": {
+                "commands": [],
+                "newFilesNeeded": {
+                    "files": [],
+                    "ignore": []
+                },
+                "installSteps": [],
+                "usageSteps": [],
+                "CommonJSorESModule": "",
+                "thingsToNote": []
+            }
+        }
+    },
+    {
+        "response": {
+            "package": "openai",
+            "zodSchema": {
+                "commands": [
+                    "npm install openai"
+                ],
+                "newFilesNeeded": {
+                    "files": [
+                        {
+                            "path": "",
+                            "content": "",
+                            "language": ""
+                        }
+                    ],
+                    "ignore": []
+                },
+                "installSteps": [],
+                "usageSteps": [
+                    "Configure the library with your account's secret key, which is available on the [website](https://beta.openai.com/account/api-keys). It is recommended to set it as an environment variable.",
+                    "Example of initializing the library with the API key loaded from an environment variable and creating a completion:",
+                    "const { Configuration, OpenAIApi } = require(\"openai\");\n\nconst configuration = new Configuration({\n  apiKey: process.env.OPENAI_API_KEY,\n});\n\nconst openai = new OpenAIApi(configuration);\n\nconst completion = await openai.createCompletion({\n  model: \"text-davinci-002\",\n  prompt: \"Hello world\",\n});\nconsole.log(completion.data.choices[0].text);"
+                ],
+                "CommonJSorESModule": "",
+                "thingsToNote": []
+            }
+        }
+    },
+    {}
+]

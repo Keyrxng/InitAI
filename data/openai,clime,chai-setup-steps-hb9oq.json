@@ -1,0 +1,175 @@
+[
+    {
+        "response": {
+            "package": "openai",
+            "zodSchema": {
+                "newFilesNeeded": {
+                    "files": [
+                        {
+                            "path": "N/A",
+                            "content": "$ npm install openai",
+                            "language": "N/A"
+                        }
+                    ]
+                },
+                "installSteps": [],
+                "usageSteps": [],
+                "CommonJSorESModule": "N/A",
+                "thingsToNote": []
+            }
+        }
+    },
+    {
+        "response": {
+            "package": "clime",
+            "zodSchema": {
+                "newFilesNeeded": {
+                    "files": [
+                        {
+                            "path": "tsconfig.json",
+                            "content": "{\n  \"compilerOptions\": {\n    \"target\": \"es6\",\n    \"experimentalDecorators\": true,\n    \"emitDecoratorMetadata\": true\n  }\n}"
+                        },
+                        {
+                            "path": "src/cli.ts",
+                            "content": "#!/usr/bin/env node\n\nimport * as Path from 'path';\nimport {CLI, Shim} from 'clime';\n\nlet cli = new CLI('greet', Path.join(__dirname, 'commands'));\n\nlet shim = new Shim(cli);\nshim.execute(process.argv);"
+                        },
+                        {
+                            "path": "src/commands/default.ts",
+                            "content": "import {Command, command, param} from 'clime';\n\n@command({\n  description: 'This is a command for printing a greeting message',\n})\nexport default class extends Command {\n  execute(\n    @param({\n      description: 'Your loud name',\n      required: true,\n    })\n    name: string,\n  ) {\n    return `Hello, ${name}!`;\n  }\n}"
+                        }
+                    ],
+                    "ignore": []
+                },
+                "installSteps": [
+                    "yarn add clime",
+                    "npm install clime --save"
+                ],
+                "usageSteps": [
+                    "Create an entry file (`src/cli.ts`) and a command file (`src/commands/default.ts`)",
+                    "In the entry file, import the necessary modules and create a new CLI instance with the command folder path",
+                    "Create a new Shim instance with the CLI and execute it with `process.argv`"
+                ],
+                "CommonJSorESModule": "ESModule",
+                "thingsToNote": [
+                    "Clime requires Node.js 6+ and TypeScript compilation options in `tsconfig.json` to be set as `'es6'` / `'es2015'` or higher, with `experimentalDecorators` and `emitDecoratorMetadata` enabled",
+                    "Clime provides features such as type and schema based parameters/options casting, object and promise based architecture, file path based multi-level subcommands, automatic usage generating, and multiple command roots support",
+                    "Clime also supports parameter types and options schema using decorators",
+                    "Clime supports subcommands and allows multi-level subcommands based on file structures",
+                    "Clime is testable and can be easily tested by extending the Context class and defining an ExitSignal class",
+                    "Clime is licensed under the MIT License"
+                ]
+            }
+        },
+        "res": {
+            "package": "clime",
+            "zodSchema": {
+                "newFilesNeeded": {
+                    "files": [
+                        {
+                            "path": "src/cli.ts",
+                            "content": "#!/usr/bin/env node\n\nimport * as Path from 'path';\nimport {CLI, Shim} from 'clime';\n\nlet cli = new CLI('greet', Path.join(__dirname, 'commands'));\n\nlet shim = new Shim(cli);\nshim.execute(process.argv);",
+                            "language": "typescript"
+                        },
+                        {
+                            "path": "src/commands/default.ts",
+                            "content": "import {Command, command, param} from 'clime';\n\n@command({\n  description: 'This is a command for printing a greeting message',\n})\nexport default class extends Command {\n  execute(\n    @param({\n      description: 'Your loud name',\n      required: true,\n    })\n    name: string,\n  ) {\n    return `Hello, ${name}!`;\n  }\n}",
+                            "language": "typescript"
+                        }
+                    ],
+                    "ignore": []
+                },
+                "installSteps": [
+                    "yarn add clime",
+                    "npm install clime --save"
+                ],
+                "usageSteps": [
+                    "Create an entry file (`src/cli.ts`) and a command file (`src/commands/default.ts`)",
+                    "In the entry file, import the necessary modules and create a new CLI instance with the command folder path",
+                    "Create a new Shim instance with the CLI and execute it with `process.argv`"
+                ],
+                "CommonJSorESModule": "CommonJS",
+                "thingsToNote": [
+                    "Clime requires Node.js 6+ and TypeScript compilation options in `tsconfig.json` to be set as `'es6'` / `'es2015'` or higher, with `experimentalDecorators` and `emitDecoratorMetadata` enabled",
+                    "Clime provides type and schema based parameters/options casting",
+                    "Clime supports multi-level subcommands based on file structures",
+                    "Clime is testable and can be easily tested",
+                    "Clime is licensed under the MIT License"
+                ]
+            }
+        }
+    },
+    {
+        "response": {
+            "package": "chai",
+            "zodSchema": {
+                "newFilesNeeded": {
+                    "files": [
+                        {
+                            "path": "spec.js",
+                            "content": "var chai = require('chai');\nvar assert = chai.assert;    // Using Assert style\nvar expect = chai.expect;    // Using Expect style\nvar should = chai.should();  // Using Should style",
+                            "language": "javascript"
+                        }
+                    ],
+                    "ignore": []
+                },
+                "installSteps": [
+                    "$ npm install --save-dev chai"
+                ],
+                "usageSteps": [
+                    "Import the library in your code, and then pick one of the styles you'd like to use - either `assert`, `expect` or `should`:",
+                    "var chai = require('chai');",
+                    "var assert = chai.assert;    // Using Assert style",
+                    "var expect = chai.expect;    // Using Expect style",
+                    "var should = chai.should();  // Using Should style"
+                ],
+                "CommonJSorESModule": "CommonJS",
+                "thingsToNote": [
+                    "Chai is a BDD / TDD assertion library for node and the browser.",
+                    "It can be paired with any javascript testing framework.",
+                    "Chai is available on npm.",
+                    "You can also use it within the browser.",
+                    "Chai offers a robust Plugin architecture for extending Chai's assertions and interfaces."
+                ]
+            }
+        },
+        "res": {
+            "package": "chai",
+            "zodSchema": {
+                "newFilesNeeded": {
+                    "files": [
+                        {
+                            "path": "path/to/file1",
+                            "content": "file1 content",
+                            "language": "javascript"
+                        },
+                        {
+                            "path": "path/to/file2",
+                            "content": "file2 content",
+                            "language": "javascript"
+                        }
+                    ],
+                    "ignore": [
+                        "file3",
+                        "file4"
+                    ]
+                },
+                "installSteps": [
+                    "Step 1: Open your terminal",
+                    "Step 2: Navigate to your project directory",
+                    "Step 3: Run the command 'npm install --save-dev chai'"
+                ],
+                "usageSteps": [
+                    "Step 1: Import the chai library in your code",
+                    "Step 2: Choose one of the styles: assert, expect, or should",
+                    "Step 3: Start writing your assertions using the chosen style"
+                ],
+                "CommonJSorESModule": "CommonJS",
+                "thingsToNote": [
+                    "Chai can be used with any JavaScript testing framework",
+                    "Chai offers different assertion styles: assert, expect, and should",
+                    "Chai can be used in Node.js and in the browser"
+                ]
+            }
+        }
+    }
+]
