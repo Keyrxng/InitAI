@@ -1,3 +1,5 @@
+## Outdated
+
 # InitAI CLI Tool
 
 InitAI is a CLI tool designed to streamline the process of setting up new projects with various npm packages. The tool fetches package information from the npm registry, extracts installation instructions from package readmes using an AI model. Currently instructions are only output as md tables, but in the future the tool will be able to automatically generate setup scripts and run them to install packages, create config files, etc.
